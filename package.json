@@ -2,15 +2,26 @@
   "name": "agora-recorder",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "build/index.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node build/index.js",
+    "start:dev": "source .env-dev && nodemon",
+    "start:prod": "npm run build && node build/index.js",
+    "build": "rimraf ./build && tsc"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@hapi/hapi": "^20.1.0",
-    "axios": "^0.21.1"
+    "agora-access-token": "^2.0.4",
+    "axios": "^0.21.1",
+    "hapi": "^18.1.0"
+  },
+  "devDependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/hapi": "^18.0.5",
+    "nodemon": "^2.0.7",
+    "rimraf": "^3.0.2",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.3"
   }
 }
