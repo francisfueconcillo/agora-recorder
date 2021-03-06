@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { RtcTokenBuilder } from 'agora-access-token'
+import { RtcTokenBuilder } from 'agora-access-token';
 
 
 const CONFIG = {

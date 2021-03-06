@@ -65,47 +65,32 @@ const stopHandler = async(request: Hapi.Request, h: Hapi.ResponseToolkit) => {
 export const routes = [{
     method: 'GET',
     path: '/token',
-    options: {
-      cors: true,
-      handler: (request: Hapi.Request, h: Hapi.ResponseToolkit) => {
-        const token = generateToken(
-          request.query.cname,
-          request.query.uid,
-          request.query.attendee === 'host' ? 1 : 2,
-        );
-  
-        return { token };
-      }
+    handler: (request: Hapi.Request, h: Hapi.ResponseToolkit) => {
+      const token = generateToken(
+        request.query.cname,
+        request.query.uid,
+        request.query.attendee === 'host' ? 1 : 2,
+      );
+
+      return { token };
     }
   }, {
     method: 'GET',
     path: '/start',
-    options: {
-      cors: true,
-      handler: startHandler
-    },
+    handler: startHandler
   }, {
     method: 'GET',
     path: '/query',
-    options: {
-      cors: true,
-      handler: queryHandler
-    },
+    handler: queryHandler
   }, {
     method: 'GET',
     path: '/stop',
-    options: {
-      cors: true,
-      handler: stopHandler
-    }
+    handler: stopHandler
   }, {
     method: 'GET',
     path: '/records',
-    options: {
-      cors: true,
-      handler: async () => {
-        return await S3ListObjects(CONFIG.AWS_S3_BUCKET);
-      }
+    handler: async () => {
+      return await S3ListObjects(CONFIG.AWS_S3_BUCKET);
     }
   }
 ];

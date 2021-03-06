@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node build/index.js",
     "start:dev": "source .env-dev && nodemon",
-    "start:prod": "npm run build && node build/index.js",
+    "start:prod": "source .env && npm run build && node build/index.js",
     "build": "rimraf ./build && tsc"
   },
   "author": "",

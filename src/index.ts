@@ -7,6 +7,11 @@ const init = async () => {
   const server = new HapiServer({
     host: '0.0.0.0',
     port: process.env.PORT || 9000,
+    routes: {
+      cors: {
+          origin: ['*'] // an array of origins or 'ignore'           
+      }
+    }
   });
 
   server.route(routes);
