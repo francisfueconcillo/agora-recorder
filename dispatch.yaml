@@ -1,0 +1,20 @@
+dispatch:
+
+# Matches the path "/fun", but not "/fun2" or "/fun/other"
+- url: "*/"
+  service: default
+
+- url: "*/token"
+  service: agora-api
+
+- url: "*/start"
+  service: agora-api
+
+- url: "*/stop"
+  service: agora-api
+
+- url: "*/records"
+  service: agora-api
+
+- url: "*/query"
+  service: agora-api

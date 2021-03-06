@@ -1,0 +1,23 @@
+runtime: nodejs12
+
+env: standard
+
+service: agora-api
+
+env_variables:
+  NODE_ENV: "production"
+  CUSTOMERID: ""
+  CUSTOMER_SECRET: ""
+  APP_ID: ""
+  APP_CERT: ""
+  AGORA_TOKEN_EXPIRY: 3600
+  AWS_S3_BUCKET: ""
+  AWS_S3_ACCESS_KEY: ""
+  AWS_S3_SECRET_KEY: ""
+  AWS_S3_REGION_AGORA_ID: <integer>
+  AWS_S3_REGION_SHORT_NAME: ""
+
+resources:
+  cpu: 1
+  memory_gb: 0.5
+  disk_size_gb: 0.3
