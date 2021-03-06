@@ -11,8 +11,8 @@ const CONFIG = {
   BASE_URL: "https://api.agora.io/v1/apps",
   AWS_S3_BUCKET: process.env.AWS_S3_BUCKET,
   AWS_S3_REGION_AGORA_ID: process.env.AWS_S3_REGION_AGORA_ID,
-  AWS_ACCESS_KEY: process.env.AWS_ACCESS_KEY,
-  AWS_SECRET_KEY: process.env.AWS_SECRET_KEY,
+  AWS_S3_ACCESS_KEY: process.env.AWS_S3_ACCESS_KEY,
+  AWS_S3_SECRET_KEY: process.env.AWS_S3_SECRET_KEY,
 };
 
 const Authorization = `Basic ${Buffer.from(`${CONFIG.CUSTOMERID}:${CONFIG.CUSTOMER_SECRET}`).toString("base64")}`;
@@ -57,8 +57,8 @@ export const startRecord = async (
           vendor: 1,
           region: parseInt(CONFIG.AWS_S3_REGION_AGORA_ID),
           bucket: CONFIG.AWS_S3_BUCKET,
-          accessKey: CONFIG.AWS_ACCESS_KEY,
-          secretKey: CONFIG.AWS_SECRET_KEY,
+          accessKey: CONFIG.AWS_S3_ACCESS_KEY,
+          secretKey: CONFIG.AWS_S3_SECRET_KEY,
           fileNamePrefix: [ uid ],
         },
       },
