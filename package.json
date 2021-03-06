@@ -13,10 +13,12 @@
   "license": "ISC",
   "dependencies": {
     "agora-access-token": "^2.0.4",
+    "aws-sdk": "^2.858.0",
     "axios": "^0.21.1",
     "hapi": "^18.1.0"
   },
   "devDependencies": {
+    "@types/aws-sdk": "^2.7.0",
     "@types/axios": "^0.14.0",
     "@types/hapi": "^18.0.5",
     "nodemon": "^2.0.7",

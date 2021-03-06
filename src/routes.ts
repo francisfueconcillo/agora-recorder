@@ -1,6 +1,7 @@
 import axios from 'axios';
 import * as Hapi from "hapi";
-import { startRecord, queryRecord, stopRecord } from './agora';
+import { startRecord, queryRecord, stopRecord, generateToken } from './agora';
+import { S3ListObjects } from './aws-s3';
 
 
 const CONFIG = {
@@ -8,6 +9,7 @@ const CONFIG = {
   CUSTOMER_SECRET: process.env.CUSTOMER_SECRET,
   APP_ID: process.env.APP_ID,
   BASE_URL: "https://api.agora.io/v1/apps",
+  AWS_S3_BUCKET: process.env.AWS_S3_BUCKET,
 };
 
 const Authorization = `Basic ${Buffer.from(`${CONFIG.CUSTOMERID}:${CONFIG.CUSTOMER_SECRET}`).toString("base64")}`;
@@ -60,13 +62,19 @@ const stopHandler = async(request: Hapi.Request, h: Hapi.ResponseToolkit) => {
   return stop.data;
 }
 
-
 export const routes = [{
     method: 'GET',
     path: '/token',
     handler: (request: Hapi.Request, h: Hapi.ResponseToolkit) => {
-      return 'Agora Recorder';
+      const token = generateToken(
+        request.query.cname,
+        request.query.uid,
+        request.query.attendee === 'host' ? 1 : 2,
+      );
+
+      return { token };
     }
+
 
   }, {
     method: 'GET',
@@ -83,8 +91,14 @@ export const routes = [{
       handler: queryHandler
     },
   }, {
-    method: 'POST',
+    method: 'GET',
     path: '/stop',
     handler: stopHandler
+  }, {
+    method: 'GET',
+    path: '/records',
+    handler: async () => {
+      return await S3ListObjects(CONFIG.AWS_S3_BUCKET);
+    }
   }
 ];
