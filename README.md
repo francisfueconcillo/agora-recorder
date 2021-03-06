@@ -54,7 +54,7 @@ GET `http://localhost:9000/api/token?cname=mychannel&uid=123456&attendee=host`
 GET http://localhost:9000/api/start?cname=xxx&uid=454976650&ctype=rtc&token=006ba22c24da19b40c8a85f3a6d84709499IAAZBrwqE30GZ068A3miE80mVn3SHGgq/g3L5wfdBdlMQArqmxyep+9FIgDkJ+2bJDJEYAQAAQC07kJgAgC07kJgAwC07kJgBAC07kJg
 ```
 
-## Start Recording
+## Query Recording
 - Query Recording Endpoint: `/api/query?resid=<resourceId>&sid=<sid>`. 
 - Where `<resourceId>` and `sid` were returned when Starting the recording was successful.
 - Example:
