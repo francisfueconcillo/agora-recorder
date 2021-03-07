@@ -4,17 +4,17 @@ dispatch:
 - url: "*/"
   service: default
 
-- url: "*/token"
+- url: "*/api/token"
   service: agora-api
 
-- url: "*/start"
+- url: "*/api/start"
   service: agora-api
 
-- url: "*/stop"
+- url: "*/api/stop"
   service: agora-api
 
-- url: "*/records"
+- url: "*/api/records"
   service: agora-api
 
-- url: "*/query"
+- url: "*/api/query"
   service: agora-api

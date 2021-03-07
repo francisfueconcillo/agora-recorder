@@ -4,3 +4,4 @@
 
 # Except the Cloud Function files we want to deploy
 !/build
+!app.yaml

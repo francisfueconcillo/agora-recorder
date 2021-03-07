@@ -64,7 +64,7 @@ const stopHandler = async(request: Hapi.Request, h: Hapi.ResponseToolkit) => {
 
 export const routes = [{
     method: 'GET',
-    path: '/token',
+    path: '/api/token',
     handler: (request: Hapi.Request, h: Hapi.ResponseToolkit) => {
       const token = generateToken(
         request.query.cname,
@@ -76,19 +76,19 @@ export const routes = [{
     }
   }, {
     method: 'GET',
-    path: '/start',
+    path: '/api/start',
     handler: startHandler
   }, {
     method: 'GET',
-    path: '/query',
+    path: '/api/query',
     handler: queryHandler
   }, {
     method: 'GET',
-    path: '/stop',
+    path: '/api/stop',
     handler: stopHandler
   }, {
     method: 'GET',
-    path: '/records',
+    path: '/api/records',
     handler: async () => {
       return await S3ListObjects(CONFIG.AWS_S3_BUCKET);
     }
